@@ -21,25 +21,26 @@ void solve (int tc)
         freq[x]++;
     }
     
-    // sort (v.rbegin(), v.rend());
-
-    vector<int> a, ans;
-    for (auto[val, frq] : freq)
+    sort (v.rbegin(), v.rend());
+    v.erase (unique (v.begin(), v.end()), v.end());
+    vector<int> ans;
+    for (int i = 0; i < v.size(); i++)
     {
-        a.push_back(val);
-    }
+        if (!freq[v[i]]) continue;
 
-    sort (a.rbegin(), a.rend());
-
-    for (auto x : a)
-    {
-        while (freq[x] > 0)
+        while (freq[v[i]])
         {
-            ans.push_back(x);
-            freq[x]--;
+            for (int j = i; j < v.size(); j++)
+            {
+                if (freq[v[j]])
+                {
+                    ans.push_back(v[j]);
+                    freq[v[j]]--;
+                }
+            }
         }
     }
-
+    
     for (auto x : ans) cout << x << " ";
     cout << endl;
 }
