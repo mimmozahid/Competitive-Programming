@@ -1,0 +1,76 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp> 
+using namespace __gnu_pbds;
+using namespace std;
+using ll = long long;
+template <typename T> using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; 
+
+
+#define MOD 998244353
+
+int power (int x, int n)
+{
+    int ans = 1%MOD;
+    while (n)
+    {
+        if (n & 1)
+        {
+            ans = (1LL * ans%MOD * x%MOD);
+        }
+        x = 1LL * x * x % MOD;
+        n>>=1;
+    }
+    return ans;
+}
+
+
+
+void solve ()
+{
+    int n, k, m, cnt = 0;
+    cin >> n >> k >> m;
+
+    if (k > m)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+    
+    cout << "YES" << endl;
+
+    int a = m;
+    vector<int> v;
+    for (int i = 0; i < n; i++)
+    {
+        if (cnt == k-1)
+        {
+            v.push_back(a);
+            cnt = 0;
+            a = m;
+        }
+        v.push_back(1);
+        a -= 1;
+        cnt++;
+    }
+    
+    for (int i = 0; i < n; i++)
+    {
+        cout << v[i] << " ";
+    }
+    cout << endl;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int t = 1;
+    cin >> t;
+    while (t--)
+        solve ();
+
+    return 0;
+}
+

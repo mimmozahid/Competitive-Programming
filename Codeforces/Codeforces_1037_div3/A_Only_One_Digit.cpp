@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+void solve ()
+{
+    string n;
+    cin >> n;
+
+    vector<int> frq(10, 0);
+    for (int i = 0; i < n.size(); i++)
+    {
+        frq[n[i]-'0']++;
+    }
+    
+    for (int i = 0; i < 10; i++)
+    {
+        if (frq[i] != 0)
+        {
+            cout << i << endl;
+            return;
+        }
+    }
+    
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int t;
+    cin >> t;
+    
+    while (t--)
+        solve ();
+    
+    return 0;
+}
