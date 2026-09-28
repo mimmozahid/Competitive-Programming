@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp> 
+using namespace __gnu_pbds;
+using namespace std;
+using ll = long long;
+#define MOD 998244353
+template <typename T> using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; 
+
+
+
+void solve ()
+{
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for (auto &x : v) cin >> x;
+
+    int cnt0 = 0;
+    for (auto x : v)
+    {
+        if (x == 0)
+            cnt0++;
+    }
+
+    if (cnt0 < 2)
+    {
+        cout << -1 << endl;
+        return;
+    }
+    int ans = 0;
+    if (v[0] == 1) ans++;
+    if (v[n-1] == 1) ans++;
+
+    cout << ans << endl;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int t = 1;
+    cin >> t;
+    while (t--)
+        solve ();
+
+    return 0;
+}
+
