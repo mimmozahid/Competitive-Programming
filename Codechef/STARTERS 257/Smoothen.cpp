@@ -13,7 +13,7 @@ void solve (int tc)
 {
     int n;
     cin >> n;
-    vector<int> v(n);
+    vector<ll> v(n), b;
     for (auto &x :v) cin >> x;
 
     int idx = -1;
@@ -34,12 +34,27 @@ void solve (int tc)
 
     auto ok = [&](int mid)
     {
-        int a = lower_bound (v.begin(), v.begin()+idx+1, mid)-v.begin();
+        b = v;
+        int a = lower_bound (b.begin(), b.begin()+idx+1, mid)-b.begin();
         ll s = 0;
         for (int i = a; i < n; i++)
         {
-            s += v[i]-mid;
-            if (s < 0)
+            if (b[i] >= mid)
+            {
+                s += b[i]-mid;
+                b[i] = mid;
+            }
+            else
+            {
+                ll q = min (s, mid-b[i]);
+                s -= q;
+                b[i] += q;
+            }
+        }
+        
+        for (int i = 0; i < n-1; i++)
+        {
+            if (b[i] > b[i+1])
                 return false;
         }
         return true;
