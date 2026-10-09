@@ -4,10 +4,10 @@ using ll = long long;
 
 void solve ()
 {
-    int x, y;
-    cin >> x >> y;
+    int a, b;
+    cin >> a >> b;
 
-    if (x%y == 0)
+    if (__gcd (a, b) == a)
         cout << "YES" << endl;
     else
         cout << "NO" << endl;
