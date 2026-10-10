@@ -11,22 +11,11 @@ template <typename T> using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree
 
 void solve (int tc)
 {
-    int r, x1, x2;
-    cin >> x1 >> x2 >> r;
+    int a, b, r;
+    cin >> a >> b >> r;
 
-
-    for (int i = -r; i <= r; i++)
-    {
-        for (int j = -r; j <= r; j++)
-        {
-            if (i*i + j*j == r*r)
-            {
-                cout << x1+i << " " << x2+j << endl;
-                return;
-            }
-        }
-
-    }
+    cout << a << " " << b+r << endl;
+    
 }
 
 int main()
