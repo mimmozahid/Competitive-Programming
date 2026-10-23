@@ -34,7 +34,7 @@ int power (int x, int n)
     }
     return ans;
 }
-
+/*
 void solve (int tc)
 {
     int n, k;
@@ -47,6 +47,29 @@ void solve (int tc)
     ll ans = (fact[k] * power (k, n-k)) % MOD;
     cout << ans << endl;
 
+}
+*/
+
+// solution 1
+void solve (int tc)
+{
+    int n, k;
+    cin >> n >> k;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+    }
+    
+    ll ans = 1;
+    int rem = k-1;
+
+    for (int i = 1; i <= n; i++)
+    {
+        ll cur = min (k, n-i+1);
+        ans = (ans*cur) % MOD;
+    }
+    cout << ans << endl;
 }
 
 int main()
